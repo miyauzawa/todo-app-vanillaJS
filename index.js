@@ -23,4 +23,5 @@ function addTodo(todoText){
 form.onsubmit = (event) =>{
     event.preventDefault();
     addTodo(input.value);
+    input.value = '';
 }
