@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>practice 2</title>
 </head>
 <body>
     <h1>My Todo App</h1>
@@ -17,14 +17,19 @@
         // DOM OBJECTS
         const todoList = document.getElementById("todo-list");
         const form = document.querySelector("form");
-        const submitBtn = document.querySelector("[name='todo-item']");
+        const input = document.querySelector("[name='todo-item']");
 
         // LIFE CYCLE
-        let existingTodos = JSON.parse(localStorage.getItem("todos"));
+        let existingTodos = JSON.parse(localStorage.getItem("todo-items"));
         let todoData = existingTodos || [];
         
-        todoData.forEach(todo) {
+        todoData.forEach((todo)=>{
             renderTodo(todo);
+        });
+
+        function addTodo(todoText){
+            todoData.push(todoText);
+            localStorage.setItem("todo-items", JSON.stringify(todoData));
         }
 
         function renderTodo(todoText){
@@ -33,10 +38,16 @@
             todoList.appendChild(li);
         }
 
+        
+
         // EVENT
         form.onsubmit = (event) =>{
             event.preventDefault();
 
+            addTodo(input.value);
+            renderTodo(input.value);
+
+            input.value = '';
         }
 
 

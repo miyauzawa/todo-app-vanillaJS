@@ -1,3 +1,5 @@
+// According to the code from a video by Fireship
+
 // DOM elements
 const form = document.querySelector("form");
 const input = document.querySelector("[name='todo']");
